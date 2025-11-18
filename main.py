@@ -7,17 +7,22 @@ def get_book_text(path_to_file):
     return file_contents
 
 def main():
-    file_path = sys.argv[1]
-    file_text = get_book_text(file_path)
-    dict_letters = get_num_letters(file_text)
-    word_count = get_num_words(file_text)
 
-    msg = f"""============ BOOKBOT ============
-Analyzing book found at {file_path}...
------------ Word Count ----------
-Found {word_count} total words
---------- Character Count -------"""
-    print(msg)
-    dict_to_list(dict_letters)
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        file_path = sys.argv[1]
+        file_text = get_book_text(file_path)
+        dict_letters = get_num_letters(file_text)
+        word_count = get_num_words(file_text)
+
+        msg = f"""============ BOOKBOT ============
+    Analyzing book found at {file_path}...
+    ----------- Word Count ----------
+    Found {word_count} total words
+    --------- Character Count -------"""
+        print(msg)
+        dict_to_list(dict_letters)
 
 main()
